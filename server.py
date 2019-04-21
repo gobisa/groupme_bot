@@ -104,8 +104,8 @@ def incoming_message():
         elif command == 'slatt':
             messaging.send_message("Slime Love All The Time")
         elif command == 'nuke':
-            for i in range(30):
-                messaging.send_message("You brought this upon yourself")
+            for i in range(10):
+                messaging.send_message("This is how the world ends, not with a bang but with roboto")
         else:
             messaging.send_message("invalid command")
         return ''
