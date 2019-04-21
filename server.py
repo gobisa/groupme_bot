@@ -108,22 +108,21 @@ def incoming_message():
                 messaging.send_message("You brought this upon yourself")
         else:
             messaging.send_message("invalid command")
+        return ''
+    # Case and punctuation sensitive repsonses
+    if "Bush" in message:
+            messaging.send_message("George W. Bush, best president")
+            return ''
+    # remove punctuation and make lowercase
+    message = re.sub(r'[^\w\s]', '', message).lower()
+    print(message)
     # responses to single word messages
-    elif message.lower() == "nice":
+    if message == "nice":
         messaging.send_message("Yeah, nice.")
-    elif message.lower() == "wow":
+    elif message == "wow":
         messaging.send_message("https://media1.fdncms.com/stranger/imager/u/original/25961827/28378083_1638438199580575_8366019535260245188_n.jpg")
     # responses to substrings
     else:
-        # case sensitive operations
-        if "Bush" in message:
-            messaging.send_message("George W. Bush, best president")
-            return 'message sent'
-
-        # remove punctuation and make lowercase
-        message = re.sub(r'[^\w\s]', '', message).lower()
-        print(message)
-
         # multi-word strings
         if "what time" in message:
             messaging.send_message("Time to get a watch!")
