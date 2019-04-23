@@ -176,6 +176,9 @@ if __name__ == '__main__':
     scheduler.add_job(messages.meat_show, trigger='cron',
                       month=2, day=14, hour=9, 
                       timezone=tz)
+    scheduler.add_job(messages.rip_mouse, trigger='cron',
+                      month=4, day=23, hour=12,
+                      timezone=tz)
     scheduler.add_job(keep_app_awake, 'interval', minutes=20, timezone=tz)
     scheduler.start()
 

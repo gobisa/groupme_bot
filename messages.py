@@ -12,6 +12,9 @@ def five_o_clock():
     if random.randrange(30) == 0:
 	    send_message("It's 5 o'clock in the morning")
 
+def rip_mouse():
+    send_message("RIP glue trap mouse, 4/23/19")
+
 def test_scheduler():
 	send_message("scheduled message in memory of JP")
 	
