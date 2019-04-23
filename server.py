@@ -28,8 +28,8 @@ app = flask.Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return flask.abort(403)
-    '''
+    #return flask.abort(403)
+    
     if flask.request.method == 'GET':
         return flask.send_from_directory(directory='static', filename='index.html')
 
@@ -38,10 +38,12 @@ def index():
 
     if re.match(link_pattern, message):
         return "please don't send links"
+    
+    if message[-1] != "?":
+        return "you must submit a question"
 
-    messaging.send_message("> {}".format(message))
+    messaging.send_message("{}\nsubmission link: https://globbot.herokuapp.com/".format(message))
     return 'message sent'
-    '''
 
 
 @app.route('/incoming_message', methods=['GET', 'POST'])
