@@ -43,7 +43,7 @@ def index():
         return "you must submit a question"
 
     messaging.send_message("{}\nsubmission link: https://globbot.herokuapp.com/".format(message))
-    return 'message sent'
+    return flask.redirect('https://globbot.herokuapp.com/')
 
 
 @app.route('/incoming_message', methods=['GET', 'POST'])
