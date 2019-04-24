@@ -12,6 +12,7 @@ from PyLyrics import *
 
 import messages
 import messaging
+import helper
 
 
 '''Logger'''
@@ -24,6 +25,8 @@ log.addHandler(h)
 
 
 app = flask.Flask(__name__)
+
+RESPONSE_DIR = "long_responses"
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -108,6 +111,8 @@ def incoming_message():
         elif command == 'nuke':
             for i in range(10):
                 messaging.send_message("This is how the world ends, not with a bang but with roboto")
+        elif command == "koalas":
+            messaging.send_message(helper.get_file_text(os.path.join(RESPONSE_DIR, "koalas.txt")))
         else:
             messaging.send_message("invalid command")
         return ''
