@@ -1,5 +1,5 @@
 import requests
-r = requests.post("https://globbot.herokuapp.com/incoming_message", data={
+r = requests.post("http://localhost:5000/incoming_message", data={
   "attachments": [],
   "avatar_url": "https://i.groupme.com/123456789",
   "created_at": 1302623328,
