@@ -85,7 +85,7 @@ def incoming_message():
 
         command = full_command[1].lower()
         if command in ['help', 'commands', 'command', 'options', 'option']:
-            help_message = "Commands:\n'@bot lyrics <Artist>, <Song>'\n'@bot brother'\n'@bot accolades'\n'@bot repost'\n'@bot slatt'\n'@bot nuke' (no longer supported)"
+            help_message = "Commands:\n'@bot lyrics <Artist>, <Song>'\n'@bot brother'\n'@bot accolades'\n'@bot repost'\n'@bot slatt'\n'@bot nuke'\n'koalas'"
             messaging.send_message(help_message)
         elif command == 'lyrics':
             try:
