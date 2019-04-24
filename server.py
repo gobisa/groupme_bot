@@ -28,6 +28,8 @@ app = flask.Flask(__name__)
 
 RESPONSE_DIR = "long_responses"
 
+previous_sender_id = None
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -118,8 +120,13 @@ def incoming_message():
         return ''
     # Case and punctuation sensitive repsonses
     if "Bush" in message:
-            messaging.send_message("George W. Bush, best president")
-            return ''
+        messaging.send_message("George W. Bush, best president")
+        return ''
+    elif message[-1] == "*" and previous_sender_id != sender_id:
+        messaging.send_message(helper.get_file_text(os.path.join(RESPONSE_DIR, "mistake.txt")))
+        previous_sender_id = sender_id
+        return ''
+    previous_sender_id = sender_id
     # remove punctuation and make lowercase
     message = re.sub(r'[^\w\s]', '', message).lower()
     print(message)
