@@ -153,16 +153,11 @@ def incoming_message():
                 return 'message sent'
 
             if word in ["u", "ur"] and sender_id == austin_sender_id:
-                if word == "u":
-                    messaging.send_message(
-                        "You said \"{},\" did you mean \"you?\"".format(word))
-                else:
-                    messaging.send_message(
-                        "You said \"{},\" did you mean \"your?\"".format(word))
+                messaging.send_message(
+                    "You said \"{},\" did you mean \"yo{}?\"".format(word, word))
                 return 'message sent'
 
             syllables = dic.inserted(word).split('-')
-            print(syllables)
             if (random.randrange(3) == 0 and syllables[-1] == 'er'
                and word not in ['other', 'another', 'ever', 'never', 'together', 'whatever', 'whenever', 'earlier', 'whomever', 'whoever']):
                 messaging.send_message(
