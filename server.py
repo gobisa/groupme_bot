@@ -87,7 +87,7 @@ def incoming_message():
 
         command = full_command[1].lower()
         if command in ['help', 'commands', 'command', 'options', 'option']:
-            help_message = "Commands:\n'@bot lyrics <Artist>, <Song>'\n'@bot brother'\n'@bot accolades'\n'@bot repost'\n'@bot slatt'\n'@bot nuke'\n'koalas'"
+            help_message = "Commands:\n'@bot lyrics <Artist>, <Song>'\n'@bot brother'\n'@bot accolades'\n'@bot repost'\n'@bot slatt'\n'@bot nuke'\n'koalas'\n'link'"
             messaging.send_message(help_message)
         elif command == 'lyrics':
             try:
@@ -115,6 +115,8 @@ def incoming_message():
                 messaging.send_message("This is how the world ends, not with a bang but with roboto")
         elif command == "koalas":
             messaging.send_message(helper.get_file_text(os.path.join(RESPONSE_DIR, "koalas.txt")))
+        elif command == "link":
+            messaging.send_message("https://globbot.herokuapp.com/")
         else:
             messaging.send_message("invalid command")
         return ''
@@ -158,7 +160,7 @@ def incoming_message():
                 return 'message sent'
 
             syllables = dic.inserted(word).split('-')
-            if (random.randrange(3) == 0 and syllables[-1] == 'er'
+            if (random.randrange(20) == 0 and syllables[-1] == 'er'
                and word not in ['other', 'another', 'ever', 'never', 'together', 'whatever', 'whenever', 'earlier', 'whomever', 'whoever']):
                 messaging.send_message(
                     "{}? I barely even know her!".format(word.capitalize()))
