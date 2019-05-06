@@ -74,7 +74,7 @@ def incoming_message():
 
     dic = pyphen.Pyphen(lang='en')
 
-    message = message_dict["text"]
+    message = message_dict["text"].rstrip()
     username = message_dict["name"]
     user_id = message_dict["user_id"]
     conversation_id = message_dict["group_id"]
