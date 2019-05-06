@@ -148,7 +148,7 @@ def incoming_message():
         return ''
     previous_sender_id = sender_id
     # remove punctuation and make lowercase
-    message = re.sub(r'[^\w\s]', '', message).lower()
+    message = re.sub(r'[^\w\s]', '', message).lower().strip()
     print(message)
     # responses to single word messages
     if message == "nice":
