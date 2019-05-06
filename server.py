@@ -141,7 +141,7 @@ def incoming_message():
         messaging.send_message("George W. Bush, best president")
         return ''
     global previous_sender_id
-    if (message[0] == "*" or message[-1] == "*") and previous_sender_id != sender_id:
+    if len(message) >= 2 and (message[0] == "*" or message[-1] == "*") and previous_sender_id != sender_id:
         messaging.send_message(helper.get_file_text(
             os.path.join(RESPONSE_DIR, "mistake.txt")))
         previous_sender_id = sender_id
