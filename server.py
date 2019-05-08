@@ -62,11 +62,15 @@ def incoming_message():
         return 'page loaded'
 
     print("in incoming_message")
+    message_dict = None
     print("incoming_message got: {}".format(flask.request.data))
     #print(flask.request.form)
 
-    #message_dict = flask.request.get_json(force=True, silent=True)
-    message_dict = flask.request.form
+    if flask.request.data:
+        message_dict = flask.request.get_json(force=True, silent=True)
+    else:
+        message_dict = flask.request.form
+
     if not message_dict:
         print("ERROR with message format, data is: {}".format(flask.request.data))
         return 'bad message format'
