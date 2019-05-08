@@ -19,7 +19,7 @@ import helper
 
 #Logger
 LOG = logging.getLogger('apscheduler.executors.default')
-LOG.setLevel(logging.INFO)  # DEBUG
+LOG.setLevel(logging.DEBUG)  # DEBUG
 FMT = logging.Formatter('%(levelname)s:%(name)s:%(message)s')
 H = logging.StreamHandler()
 H.setFormatter(FMT)
@@ -63,8 +63,10 @@ def incoming_message():
 
     print("in incoming_message")
     print("incoming_message got: {}".format(flask.request.data))
+    #print(flask.request.form)
 
-    message_dict = flask.request.get_json(force=True, silent=True)
+    #message_dict = flask.request.get_json(force=True, silent=True)
+    message_dict = flask.request.form
     if not message_dict:
         print("ERROR with message format, data is: {}".format(flask.request.data))
         return 'bad message format'
