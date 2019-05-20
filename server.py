@@ -110,6 +110,9 @@ def incoming_message():
                            \n'@bot nuke'
                            \n'@bot koalas'
                            \n'@bot link'
+                           \n'@bot owoify'
+                           \n'@bot usify'
+                           \n'@bot trolled'
                            """
             messaging.send_message(help_message)
         elif command == 'lyrics':
@@ -146,6 +149,9 @@ def incoming_message():
             messaging.send_message(previous_message.replace("r", "w").replace("l", "w"))
         elif command == "usify":
             messaging.send_message(previous_message.replace(" ", "🇺🇸"))
+        elif command == "trolled":
+            messaging.send_message(helper.get_file_text(
+                os.path.join(RESPONSE_DIR, "trolled.txt")))
         else:
             messaging.send_message("invalid command")
         return ''
