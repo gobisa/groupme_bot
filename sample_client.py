@@ -10,7 +10,7 @@ r = requests.post("http://localhost:5000/incoming_message", data={
   "sender_type": "user",
   "source_guid": "GUID",
   "system": False,
-  "text": "I want to play poker",
+  "text": "@bot patriotify",
   "user_id": "1234567890"
 })
 # And done.

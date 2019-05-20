@@ -31,6 +31,7 @@ APP = flask.Flask(__name__)
 RESPONSE_DIR = "long_responses"
 
 previous_sender_id = None
+previous_message = None
 
 
 @APP.route('/', methods=['GET', 'POST'])
@@ -89,6 +90,8 @@ def incoming_message():
 
     austin_sender_id = "37816131"
 
+    global previous_message
+
     # bot commands
     if message.startswith("@bot"):
         full_command = message.split()
@@ -139,6 +142,10 @@ def incoming_message():
                 os.path.join(RESPONSE_DIR, "koalas.txt")))
         elif command == "link":
             messaging.send_message("https://globbot.herokuapp.com/")
+        elif command == "owoify":
+            messaging.send_message(previous_message.replace("r", "w").replace("l", "w"))
+        elif command == "usify":
+            messaging.send_message(previous_message.replace(" ", "🇺🇸"))
         else:
             messaging.send_message("invalid command")
         return ''
@@ -154,6 +161,7 @@ def incoming_message():
         return ''
     previous_sender_id = sender_id
     # remove punctuation and make lowercase
+    raw_message = message
     message = re.sub(r'[^\w\s]', '', message).lower().strip()
     print(message)
     # responses to single word messages
@@ -177,20 +185,21 @@ def incoming_message():
 
             if word in ['updog', 'ligma', 'sugma']:
                 messaging.send_message("What's {}?".format(word))
-                return 'message sent'
+                break
 
             if word in ["u", "ur"] and sender_id == austin_sender_id:
                 messaging.send_message(
                     "You said \"{x},\" did you mean \"yo{x}?\"".format(x=word))
-                return 'message sent'
+                break
 
             syllables = dic.inserted(word).split('-')
             if (random.randrange(20) == 0 and syllables[-1] == 'er'
                     and word not in ['other', 'another', 'ever', 'never', 'together', 'whatever', 'whenever', 'earlier', 'whomever', 'whoever', 'wherever', 'later']):
                 messaging.send_message(
                     "{}? I barely even know her!".format(word.capitalize()))
-                return 'message sent'
+                break
 
+    previous_message = raw_message
     return 'good'
 
 
