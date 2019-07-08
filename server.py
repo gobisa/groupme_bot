@@ -161,10 +161,13 @@ def incoming_message():
         return ''
     global previous_sender_id
     if len(message) >= 2 and (message[0] == "*" or message[-1] == "*") and previous_sender_id != sender_id:
+        '''
         messaging.send_message(helper.get_file_text(
             os.path.join(RESPONSE_DIR, "mistake.txt")))
         previous_sender_id = sender_id
         return ''
+        '''
+        pass
     previous_sender_id = sender_id
     # remove punctuation and make lowercase
     raw_message = message
