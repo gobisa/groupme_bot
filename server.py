@@ -133,7 +133,7 @@ def incoming_message():
             messaging.send_message(
                 "I'm more successful, I have more accolades, I'm more charismatic, and more people know who I am. All because of my brain and how I use it, cole. U know if u pay attention maybe u could learn something.")
         elif command == 'lucky':
-            messaging.send_message("Also keith I just want you to know I could’ve dropped a nuke on your ass for that comment but I did not. Consider yourself lucky.")
+            messaging.send_message("Also I just want you to know I could’ve dropped a nuke on your ass for that comment but I did not. Consider yourself lucky.")
         elif command == 'repost':
             messaging.send_message(
                 "*Sniff sniff* What's this? OwO IS THIS A REPOST?")
