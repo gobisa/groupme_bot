@@ -58,7 +58,6 @@ def index():
 
 @APP.route('/incoming_message', methods=['GET', 'POST'])
 def incoming_message():
-    return
     """Handle incoming messages."""
     if flask.request.method == 'GET':
         return 'page loaded'
@@ -160,7 +159,7 @@ def incoming_message():
             messaging.send_message("invalid command")
         return ''
     # Case and punctuation sensitive repsonses
-    if "Bush" in message:
+    if "Bush" in message and random.randrange(3) == 0:
         messaging.send_message("George W. Bush, best president")
         return ''
     global previous_sender_id
@@ -181,8 +180,11 @@ def incoming_message():
     if message == "nice":
         messaging.send_message("Yeah, nice.")
     elif message == "wow":
+        pass
+        '''
         messaging.send_message(
             "https://media1.fdncms.com/stranger/imager/u/original/25961827/28378083_1638438199580575_8366019535260245188_n.jpg")
+        '''
     # responses to substrings
     else:
         # multi-word strings
@@ -200,13 +202,13 @@ def incoming_message():
                 messaging.send_message("What's {}?".format(word))
                 break
 
-            if word in ["u", "ur"] and sender_id == austin_sender_id:
+            if word in ["u", "ur"] and sender_id == austin_sender_id and random.randrange(3) == 0:
                 messaging.send_message(
                     "You said \"{x},\" did you mean \"yo{x}?\"".format(x=word))
                 break
 
             syllables = dic.inserted(word).split('-')
-            if (random.randrange(20) == 0 and syllables[-1] == 'er'
+            if (random.randrange(100) == 0 and syllables[-1] == 'er'
                     and word not in ['other', 'another', 'ever', 'never', 'together', 'whatever', 'whenever', 'earlier', 'whomever', 'whoever', 'wherever', 'later']):
                 messaging.send_message(
                     "{}? I barely even know her!".format(word.capitalize()))
@@ -230,8 +232,8 @@ if __name__ == '__main__':
     TZ = 'US/Eastern'
     SCHEDULER.add_job(messages.LA_time, trigger='cron',
                       hour=12, minute=8, timezone=TZ)
-    SCHEDULER.add_job(messages.five_o_clock, trigger='cron',
-                      hour=5, timezone=TZ)
+    #SCHEDULER.add_job(messages.five_o_clock, trigger='cron',
+    #                  hour=5, timezone=TZ)
     SCHEDULER.add_job(messages.meat_show, trigger='cron',
                       month=2, day=14, hour=9,
                       timezone=TZ)
