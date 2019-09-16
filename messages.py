@@ -1,9 +1,11 @@
 from messaging import send_message
 import random
 
+'''
 def LA_time():
     if random.randrange(100) == 0:
 	    send_message("9:08, LA time")
+'''
 
 def meat_show():
 	send_message("welcome to the meat show")

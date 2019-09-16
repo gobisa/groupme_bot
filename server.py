@@ -159,25 +159,27 @@ def incoming_message():
             messaging.send_message("invalid command")
         return ''
     # Case and punctuation sensitive repsonses
+    '''
     if "Bush" in message and random.randrange(3) == 0:
         messaging.send_message("George W. Bush, best president")
         return ''
+    '''
+    '''
     global previous_sender_id
     if len(message) >= 2 and (message[0] == "*" or message[-1] == "*") and previous_sender_id != sender_id:
-        '''
+        
         messaging.send_message(helper.get_file_text(
             os.path.join(RESPONSE_DIR, "mistake.txt")))
         previous_sender_id = sender_id
         return ''
-        '''
-        pass
     previous_sender_id = sender_id
+    '''
     # remove punctuation and make lowercase
     raw_message = message
     message = re.sub(r'[^\w\s]', '', message).lower().strip()
     print(message)
     # responses to single word messages
-    if message == "nice":
+    if message == "nice" and random.randrange(5):
         messaging.send_message("Yeah, nice.")
     elif message == "wow":
         pass
@@ -230,8 +232,10 @@ if __name__ == '__main__':
 
     SCHEDULER = BackgroundScheduler()
     TZ = 'US/Eastern'
+    '''
     SCHEDULER.add_job(messages.LA_time, trigger='cron',
                       hour=12, minute=8, timezone=TZ)
+    '''
     #SCHEDULER.add_job(messages.five_o_clock, trigger='cron',
     #                  hour=5, timezone=TZ)
     SCHEDULER.add_job(messages.meat_show, trigger='cron',
