@@ -209,12 +209,14 @@ def incoming_message():
                     "You said \"{x},\" did you mean \"yo{x}?\"".format(x=word))
                 break
 
+            '''
             syllables = dic.inserted(word).split('-')
             if (random.randrange(100) == 0 and syllables[-1] == 'er'
                     and word not in ['other', 'another', 'ever', 'never', 'together', 'whatever', 'whenever', 'earlier', 'whomever', 'whoever', 'wherever', 'later']):
                 messaging.send_message(
                     "{}? I barely even know her!".format(word.capitalize()))
                 break
+            '''
 
     previous_message = raw_message
     return 'good'
