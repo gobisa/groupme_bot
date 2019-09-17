@@ -58,6 +58,7 @@ def index():
 
 @APP.route('/incoming_message', methods=['GET', 'POST'])
 def incoming_message():
+    return
     """Handle incoming messages."""
     if flask.request.method == 'GET':
         return 'page loaded'
