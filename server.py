@@ -33,6 +33,14 @@ RESPONSE_DIR = "long_responses"
 previous_sender_id = None
 previous_message = None
 
+peopleId = {
+    "alex": "26690961",
+    "andrius": "28232254",
+    "austin": "37816131",
+    "josh": "26690961",
+    "keith": "26550236"
+}
+
 
 @APP.route('/', methods=['GET', 'POST'])
 def index():
@@ -179,7 +187,7 @@ def incoming_message():
     message = re.sub(r'[^\w\s]', '', message).lower().strip()
     print(message)
     # responses to single word messages
-    if message == "nice" and random.randrange(5):
+    if message == "nice" and random.randrange(3) and sender_id not in [peopleId["alex"]]:
         messaging.send_message("Yeah, nice.")
     elif message == "wow":
         pass
