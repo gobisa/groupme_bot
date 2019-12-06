@@ -197,6 +197,9 @@ def incoming_message():
         '''
     # responses to substrings
     else:
+        if "'s twisted" in raw_message or "is twisted" in raw_message:
+            messaging.send_message(helper.get_file_text(
+                os.path.join(RESPONSE_DIR, "joker.txt")))
         # multi-word strings
         if "what time" in message:
             messaging.send_message("Time to get a watch!")
@@ -257,6 +260,9 @@ if __name__ == '__main__':
     SCHEDULER.add_job(keep_app_awake, 'interval', minutes=20, timezone=TZ)
     SCHEDULER.start()
 
-# Bind to PORT if defined, otherwise default to 5000.
+    print(helper.get_file_text(os.path.join(RESPONSE_DIR, "joker.txt")))
+
+    # Bind to PORT if defined, otherwise default to 5000.
     PORT = int(os.environ.get('PORT', 5000))
     APP.run(host='0.0.0.0', port=PORT)
+
