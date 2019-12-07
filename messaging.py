@@ -9,7 +9,7 @@ except KeyError:
     BOT_ID = ''
     TEST_BOT_ID = ''
 #FIXME: comment this to go back to production
-BOT_ID = TEST_BOT_ID
+#BOT_ID = TEST_BOT_ID
 
 
 def send_message(text_in):
