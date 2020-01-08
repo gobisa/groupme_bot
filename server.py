@@ -215,7 +215,7 @@ def incoming_message():
                 messaging.send_message("What's {}?".format(word))
                 break
 
-            if word in ["u", "ur"] and sender_id == austin_sender_id and random.randrange(3) == 0:
+            if word in ["u", "ur"] and sender_id == austin_sender_id and random.randrange(10) == 0:
                 messaging.send_message(
                     "You said \"{x},\" did you mean \"yo{x}?\"".format(x=word))
                 break
