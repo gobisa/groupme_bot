@@ -211,9 +211,11 @@ def incoming_message():
         # message contains single key-word
         for word in message.split():
 
+            '''
             if word in ['updog', 'ligma', 'sugma']:
                 messaging.send_message("What's {}?".format(word))
                 break
+            '''
 
             if word in ["u", "ur"] and sender_id == austin_sender_id and random.randrange(10) == 0:
                 messaging.send_message(
