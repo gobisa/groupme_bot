@@ -243,7 +243,10 @@ def keep_app_awake():
 if __name__ == '__main__':
 
     # get lyrics once to get rid of warning in source code
-    PyLyrics.getLyrics('Riff Raff', 'How To Be The Man')
+    try:
+        PyLyrics.getLyrics('Riff Raff', 'How To Be The Man')
+    except ValueError:
+        pass
 
     SCHEDULER = BackgroundScheduler()
     TZ = 'US/Eastern'
