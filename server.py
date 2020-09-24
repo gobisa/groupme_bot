@@ -122,6 +122,7 @@ def incoming_message():
                            \n'@bot usify'
                            \n'@bot trolled'
                            \n'@bot lucky'
+                           \n'@bot al'
                            """
             messaging.send_message(help_message)
         elif command == 'lyrics':
@@ -163,6 +164,8 @@ def incoming_message():
         elif command == "trolled":
             messaging.send_message(helper.get_file_text(
                 os.path.join(RESPONSE_DIR, "trolled.txt")))
+        elif command == "al":
+            messaging.send_message("Al is a great guy and he's a treasure to have in this chat.")
         else:
             messaging.send_message("invalid command")
         return ''
